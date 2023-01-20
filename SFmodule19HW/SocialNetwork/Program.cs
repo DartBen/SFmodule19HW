@@ -1,42 +1,46 @@
-﻿using SocialNetwork.BLL.Services;
+﻿using SocialNetwork.BLL.Exceptions;
+using SocialNetwork.BLL.Models;
+using SocialNetwork.BLL.Services;
+using SocialNetwork.PLL;
 using SocialNetwork.PLL.Views;
+using System;
+using System.Linq;
 
-internal class Program
+namespace SocialNetwork
 {
-
-
-    static MessageService messageService;
-    static UserService userService;
-    public static MainView mainView;
-    public static RegistrationView registrationView;
-    public static AuthenticationView authenticationView;
-    public static UserMenuView userMenuView;
-    public static UserInfoView userInfoView;
-    public static UserDataUpdateView userDataUpdateView;
-    public static MessageSendingView messageSendingView;
-    public static UserIncomingMessageView userIncomingMessageView;
-    public static UserOutcomingMessageView userOutcomingMessageView;
-    //rds
-    public static UserFriendsView userFriendsView;
-
-    static void Main(string[] args)
+    class Program
     {
-        userService = new UserService();
-        messageService = new MessageService();
+        static MessageService messageService;
+        static UserService userService;
+        public static MainView mainView;
+        public static RegistrationView registrationView;
+        public static AuthenticationView authenticationView;
+        public static UserMenuView userMenuView;
+        public static UserInfoView userInfoView;
+        public static UserDataUpdateView userDataUpdateView;
+        public static MessageSendingView messageSendingView;
+        public static UserIncomingMessageView userIncomingMessageView;
+        public static UserOutcomingMessageView userOutcomingMessageView;
 
-        mainView = new MainView();
-        registrationView = new RegistrationView(userService);
-        authenticationView = new AuthenticationView(userService);
-        userMenuView = new UserMenuView(userService);
-        userInfoView = new UserInfoView();
-        userDataUpdateView = new UserDataUpdateView(userService);
-        messageSendingView = new MessageSendingView(messageService, userService);
-        userIncomingMessageView = new UserIncomingMessageView();
-        userOutcomingMessageView = new UserOutcomingMessageView();
-
-        while (true)
+        static void Main(string[] args)
         {
-            mainView.Show();
+            userService = new UserService();
+            messageService = new MessageService();
+
+            mainView = new MainView();
+            registrationView = new RegistrationView(userService);
+            authenticationView = new AuthenticationView(userService);
+            userMenuView = new UserMenuView(userService);
+            userInfoView = new UserInfoView();
+            userDataUpdateView = new UserDataUpdateView(userService);
+            messageSendingView = new MessageSendingView(messageService, userService);
+            userIncomingMessageView = new UserIncomingMessageView();
+            userOutcomingMessageView = new UserOutcomingMessageView();
+
+            while (true)
+            {
+                mainView.Show();
+            }
         }
     }
 }
