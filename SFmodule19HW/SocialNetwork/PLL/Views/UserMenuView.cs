@@ -28,11 +28,12 @@ namespace SocialNetwork.PLL.Views
                 Console.WriteLine("Написать сообщение (нажмите 4)");
                 Console.WriteLine("Просмотреть входящие сообщения (нажмите 5)");
                 Console.WriteLine("Просмотреть исходящие сообщения (нажмите 6)");
-                Console.WriteLine("Выйти из профиля (нажмите 7)");
+                Console.WriteLine("Просмотреть друзей (нажмите 7)");
+                Console.WriteLine("Выйти из профиля (нажмите 8)");
 
                 string keyValue = Console.ReadLine();
 
-                if (keyValue == "7") break;
+                if (keyValue == "8") break;
 
                 switch (keyValue)
                 {
@@ -46,7 +47,12 @@ namespace SocialNetwork.PLL.Views
                             Program.userDataUpdateView.Show(user);
                             break;
                         }
-
+                    case "3"://rds - добавление друзей
+                        {
+                            Program.addFriendVeiw.Show(user);
+                            user = userService.FindById(user.Id);
+                            break;
+                        }
                     case "4":
                         {
                             Program.messageSendingView.Show(user);
@@ -55,7 +61,6 @@ namespace SocialNetwork.PLL.Views
 
                     case "5":
                         {
-
                             Program.userIncomingMessageView.Show(user.IncomingMessages);
                             break;
                         }
@@ -63,6 +68,16 @@ namespace SocialNetwork.PLL.Views
                     case "6":
                         {
                             Program.userOutcomingMessageView.Show(user.OutgoingMessages);
+                            break;
+                        }
+                    case "7"://rds - просмотр друзей
+                        {
+                            Program.userFriendView.Show(user.Friends);
+                            break;
+                        }
+                    default:                
+                        {
+                            Console.WriteLine("Введите число от 1 до 8!");
                             break;
                         }
                 }

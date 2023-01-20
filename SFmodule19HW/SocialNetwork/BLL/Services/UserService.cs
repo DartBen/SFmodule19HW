@@ -83,6 +83,28 @@ namespace SocialNetwork.BLL.Services
 
             return ConstructUserModel(findUserEntity);
         }
+        //для получения списка друзей пользователя
+        public IEnumerable<User> GetFriendsByUserId(int userId)
+        {
+            return friendRepository.FindAllByUserId(userId)
+                    .Select(friendsEntity => FindById(friendsEntity.friend_id));
+        }
+        //добавление друзей
+        public void AddFriend(FriendUserData userAddingFriendData)
+        {
+            var findUserEntity = userRepository.FindByEmail(userAddingFriendData.FriendEmail);//проверка по почте
+            if (findUserEntity is null) findUserEntity= userRepository.FindById(userAddingFriendData.UserId);//если не нашли по почте то ищем по ID
+            if (findUserEntity is null) throw new UserNotFoundException();//выбрасываем исключение если не нашли пользователя
+
+            var friendEntity = new FriendEntity()
+            {
+                user_id = userAddingFriendData.UserId,
+                friend_id = findUserEntity.id
+            };
+
+            if (this.friendRepository.Create(friendEntity) == 0)
+                throw new Exception();
+        }
 
         public void Update(User user)
         {
@@ -107,6 +129,8 @@ namespace SocialNetwork.BLL.Services
             var incomingMessages = messageService.GetIncomingMessagesByUserId(userEntity.id);
 
             var outgoingMessages = messageService.GetOutcomingMessagesByUserId(userEntity.id);
+            //для получения списка друзей пользователя
+            var friendList = GetFriendsByUserId(userEntity.id);
 
             return new User(userEntity.id,
                           userEntity.firstname,
@@ -117,7 +141,8 @@ namespace SocialNetwork.BLL.Services
                           userEntity.favorite_movie,
                           userEntity.favorite_book,
                           incomingMessages,
-                          outgoingMessages
+                          outgoingMessages,
+                          friendList
                           );
         }
     }
