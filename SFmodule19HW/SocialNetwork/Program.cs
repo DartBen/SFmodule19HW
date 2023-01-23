@@ -21,7 +21,6 @@ namespace SocialNetwork
         public static MessageSendingView messageSendingView;
         public static UserIncomingMessageView userIncomingMessageView;
         public static UserOutcomingMessageView userOutcomingMessageView;
-        //rds 
         public static UserFriendView userFriendView;
         public static AddFriendView addFriendVeiw;
 
@@ -39,7 +38,6 @@ namespace SocialNetwork
             messageSendingView = new MessageSendingView(messageService, userService);
             userIncomingMessageView = new UserIncomingMessageView();
             userOutcomingMessageView = new UserOutcomingMessageView();
-            //rds
             addFriendVeiw = new AddFriendView(userService);
             userFriendView = new UserFriendView();
 

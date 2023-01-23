@@ -45,9 +45,10 @@ namespace SocialNetwork.PLL.Views
                     case "2":
                         {
                             Program.userDataUpdateView.Show(user);
+                            user = userService.FindById(user.Id);
                             break;
                         }
-                    case "3"://rds - добавление друзей
+                    case "3":
                         {
                             Program.addFriendVeiw.Show(user);
                             user = userService.FindById(user.Id);
@@ -56,9 +57,9 @@ namespace SocialNetwork.PLL.Views
                     case "4":
                         {
                             Program.messageSendingView.Show(user);
+                            user = userService.FindById(user.Id);
                             break;
                         }
-
                     case "5":
                         {
                             Program.userIncomingMessageView.Show(user.IncomingMessages);
@@ -70,12 +71,12 @@ namespace SocialNetwork.PLL.Views
                             Program.userOutcomingMessageView.Show(user.OutgoingMessages);
                             break;
                         }
-                    case "7"://rds - просмотр друзей
+                    case "7":
                         {
                             Program.userFriendView.Show(user.Friends);
                             break;
                         }
-                    default:                
+                    default:
                         {
                             Console.WriteLine("Введите число от 1 до 8!");
                             break;

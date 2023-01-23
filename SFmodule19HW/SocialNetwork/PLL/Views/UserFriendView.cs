@@ -10,7 +10,7 @@ namespace SocialNetwork.PLL.Views
     {
         public void Show(IEnumerable<User> users)
         {
-            if (users.Count() == 0)
+            if (users.Count() == 0 || users==null)
             {
                 Console.WriteLine("У вас нет друзей. Найдите!");
                 return;
@@ -19,12 +19,8 @@ namespace SocialNetwork.PLL.Views
 
             Console.WriteLine("Ваши друзья");
             foreach (var user in users)
-                Console.WriteLine("Имя:{0}. Фамилия:{1}. Почта:{2}", user.FirstName, user.LastName, user.Email);
+                Console.WriteLine($"Имя:{user.FirstName}. Фамилия:{user.LastName}. Почта:{user.Email}");
 
-            users.ToList().ForEach(friend =>
-            {
-                Console.WriteLine("Почтовый адрес друга: {0}. Имя друга: {1}. Фамилия друга: {2}", friend.Email, friend.FirstName, friend.LastName);
-            });
         }
     }
 }

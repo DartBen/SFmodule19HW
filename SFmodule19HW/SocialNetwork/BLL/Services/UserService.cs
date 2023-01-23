@@ -54,7 +54,6 @@ namespace SocialNetwork.BLL.Services
 
             if (this.userRepository.Create(userEntity) == 0)
                 throw new Exception();
-
         }
 
         public User Authenticate(UserAuthenticationData userAuthenticationData)
@@ -93,7 +92,6 @@ namespace SocialNetwork.BLL.Services
         public void AddFriend(FriendUserData userAddingFriendData)
         {
             var findUserEntity = userRepository.FindByEmail(userAddingFriendData.FriendEmail);//проверка по почте
-            if (findUserEntity is null) findUserEntity= userRepository.FindById(userAddingFriendData.UserId);//если не нашли по почте то ищем по ID
             if (findUserEntity is null) throw new UserNotFoundException();//выбрасываем исключение если не нашли пользователя
 
             var friendEntity = new FriendEntity()
@@ -102,7 +100,7 @@ namespace SocialNetwork.BLL.Services
                 friend_id = findUserEntity.id
             };
 
-            if (this.friendRepository.Create(friendEntity) == 0)
+            if (friendRepository.Create(friendEntity) == 0)
                 throw new Exception();
         }
 
