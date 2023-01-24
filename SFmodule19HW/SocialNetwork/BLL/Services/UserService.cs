@@ -67,6 +67,14 @@ namespace SocialNetwork.BLL.Services
             return ConstructUserModel(findUserEntity);
         }
 
+        public void DeleteById(int id)
+        {
+            try { 
+            this.userRepository.DeleteById(id);
+            }
+            catch (UserNotFoundException e ) { Console.WriteLine("Ошибка при удалении пользователя"); }
+        }
+
         public User FindByEmail(string email)
         {
             var findUserEntity = userRepository.FindByEmail(email);

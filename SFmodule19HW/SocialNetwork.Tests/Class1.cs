@@ -57,9 +57,14 @@ namespace SocialNetwork.Tests
             messageService.SendMessage(messageSendingData);
 
             user = userService.FindById(user.Id);
-            //Console.WriteLine(user.OutgoingMessages.Count());
+
 
             Assert.True(user.OutgoingMessages.Count()==user.IncomingMessages.Count());
+            //Assert.True(user.OutgoingMessages.Count() >0);
+
+            userService.deletebyid
+
+
         }
 
     }
