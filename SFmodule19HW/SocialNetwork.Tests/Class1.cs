@@ -62,7 +62,7 @@ namespace SocialNetwork.Tests
             Assert.True(user.OutgoingMessages.Count()==user.IncomingMessages.Count());
             //Assert.True(user.OutgoingMessages.Count() >0);
 
-            userService.deletebyid
+            //userService.deletebyid
 
 
         }
