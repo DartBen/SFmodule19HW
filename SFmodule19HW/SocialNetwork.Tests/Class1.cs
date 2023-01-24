@@ -10,7 +10,7 @@ namespace SocialNetwork.Tests
     public class Class1
     {
         [Test]
-        public void Test1()
+        public void MessegeSendingTest()
         {
             //общая часть
             var userService = new UserService();
@@ -50,7 +50,7 @@ namespace SocialNetwork.Tests
 
             var messageSendingData = new MessageSendingData();
 
-            messageSendingData.RecipientEmail= userRegistrationData.Email;
+            messageSendingData.RecipientEmail = userRegistrationData.Email;
             messageSendingData.Content = "G";
             messageSendingData.SenderId = user.Id;
 
@@ -59,11 +59,10 @@ namespace SocialNetwork.Tests
             user = userService.FindById(user.Id);
 
 
-            Assert.True(user.OutgoingMessages.Count()==user.IncomingMessages.Count());
+            Assert.True(user.OutgoingMessages.Count() == user.IncomingMessages.Count());
             //Assert.True(user.OutgoingMessages.Count() >0);
 
-            //userService.deletebyid
-
+            userService.DeleteById(user.Id);
 
         }
 

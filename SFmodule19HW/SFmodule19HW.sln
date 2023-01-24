@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialNetwork", "SocialNetwork\SocialNetwork.csproj", "{0BCFB5FF-93E9-433B-B54C-CC49A58FC868}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SocialNetwork.Tests", "SocialNetwork.Tests\SocialNetwork.Tests.csproj", "{08EBC229-3E5A-4FBF-8328-AC77F23EA706}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SocialNetwork.Tests", "SocialNetwork.Tests\SocialNetwork.Tests.csproj", "{08EBC229-3E5A-4FBF-8328-AC77F23EA706}"
 	ProjectSection(ProjectDependencies) = postProject
 		{0BCFB5FF-93E9-433B-B54C-CC49A58FC868} = {0BCFB5FF-93E9-433B-B54C-CC49A58FC868}
 	EndProjectSection
